@@ -1,0 +1,18 @@
+{
+  "name": "fetch-function",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "sinchang <sinchangwen@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "date-fns": "^1.29.0",
+    "fc-helper": "^2.1.3",
+    "rss-parser": "^3.5.3"
+  }
+}

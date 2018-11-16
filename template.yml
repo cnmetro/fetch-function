@@ -1,0 +1,31 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  weibo-function:
+    Type: 'Aliyun::Serverless::Service'
+    fetch-function:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: index.handler
+        Runtime: nodejs8
+        Description: 'fetch the latest metro passenger flow data'
+        CodeUri: './'
+      Events:
+        TmTriggerSH:
+          Type: Timer
+          Properties:
+            Payload: 'sh'
+            CronExpression: '0 15 4 * * *'
+            Enable: true
+        TmTriggerBJ:
+          Type: Timer
+          Properties:
+            Payload: 'bj'
+            CronExpression: '0 18 4 * * *'
+            Enable: true
+        TmTriggerGZ:
+          Type: Timer
+          Properties:
+            Payload: 'gz'
+            CronExpression: '0 21 4 * * *'
+            Enable: true
