@@ -46,14 +46,17 @@ exports.handler = asyncWrap(async event => {
         const arr = element.contentSnippet.match(RE_NUM)
         const date = format(subDays(new Date(), 1), 'YYYY-MM-DD')
         const num = item.id === 2778292197 ? arr[3] : arr[2]
-        await axios.post(`http://metro.sinchang.me/api/flows?`, {
-          date,
-          num: Number(num),
-          key: process.env.API_KEY,
-          city
-        })
 
-        await axios.get(`${process.env.API_URL}?city=${city}`)
+        if (date.substr(5) === `${arr[0]}-${arr[1]}`) {
+          await axios.post(`http://metro.sinchang.me/api/flows?`, {
+            date,
+            num: Number(num),
+            key: process.env.API_KEY,
+            city
+          })
+
+          await axios.get(`${process.env.API_URL}?city=${city}`)
+        }
 
         break
       }
