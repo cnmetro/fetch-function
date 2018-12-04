@@ -32,6 +32,10 @@ const metroData = {
   }
 }
 
+function zeroPad(num) {
+  return num.toString().padStart(2, '0')
+}
+
 exports.handler = asyncWrap(async event => {
   const evt = JSON.parse(event)
   const city = evt['payload']
@@ -47,7 +51,7 @@ exports.handler = asyncWrap(async event => {
         const date = format(subDays(new Date(), 1), 'YYYY-MM-DD')
         const num = item.id === 2778292197 ? arr[3] : arr[2]
 
-        if (date.substr(5) === `${arr[0]}-${arr[1]}`) {
+        if (date.substr(5) === `${zeroPad(arr[0])}-${zeroPad(arr[1])}`) {
           await axios.post(`http://metro.sinchang.me/api/flows?`, {
             date,
             num: Number(num),
