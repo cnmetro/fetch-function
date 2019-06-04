@@ -52,8 +52,11 @@ function zeroPad(num) {
               key: process.env.API_KEY,
               city: item.db
             })
-          }
 
+            await axios.post(process.env.NETLIFY_API_URL, {
+              city: item.db
+            })
+          }
           break
         }
       }
