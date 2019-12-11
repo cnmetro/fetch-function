@@ -38,6 +38,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - cron
     jobs:
       - build
